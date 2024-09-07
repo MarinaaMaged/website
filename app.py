@@ -1,10 +1,24 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify,render_template,Response
 import requests
 from flask_cors import CORS
+import cv2
 
 app = Flask(__name__)
+camera=cv2.VideoCapture(0)
+
 CORS(app)
 firebase_url = "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/.json"
+
+def generate_frames():
+   while True:
+        success,frame= camera.read()
+        if not success:
+            break
+        else:
+            ret,buffer=cv2.imencode('.jpg',frame)
+            farme=buffer.tobytes()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
@@ -45,6 +59,14 @@ def get_data():
             return jsonify({"error": "Invalid data format"}), 400
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/')
+def index():
+    return render_template('live.html')
+
+@app.route('/video')
+def video():
+    return Response(generate_frames(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
     app.run(debug=True)
