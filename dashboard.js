@@ -1,26 +1,11 @@
-// Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyBBBkTMKdegGRfGMRfWn_dTYR5S4EPp--g",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/" ,
-    projectId: "iot-workout-tracker",
-    //storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "848259868418",
-    appId: "YOUR_APP_ID"
-};
-
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
 
 // Create Charts for each metric
-//let activeMinutesChart = createChart('activeMinutesChart', 'Active Minutes');
-//let caloriesBurnedChart = createChart('caloriesBurnedChart', 'Calories Burned');
-//let stepsTakenChart = createChart('stepsTakenChart', 'Steps Taken');
 let waterIntakeChart = createChart('waterIntakeChart', 'Water Intake');
 let heartRateChart = createChart('heartRateChart', 'Heart Rate');
 let temperatureChart = createChart('temperatureChart', 'Temperature');
-
+let caloriesBurnedChart = createChart('caloriesBurnedChart', 'Calories Burned');
+let spO2Chart = createChart('spO2Chart', 'Oxygen Saturation');
+let humidityChart = createChart('humidityChart', 'Humidity');
 // Function to create a chart
 function createChart(canvasId, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
@@ -52,20 +37,19 @@ function createChart(canvasId, label) {
 // Function to update the dashboard and charts
 function updateDashboard(data) {
     // Update text content
-    //document.getElementById('activeMinutes').textContent = data.activeMinutes + " Min";
-    //document.getElementById('caloriesBurned').textContent = data.caloriesBurned + " Kcal";
-    //document.getElementById('stepsTaken').textContent = data.stepsTaken + " Steps";
-    document.getElementById('waterIntake').textContent = data.waterIntake + "/10 Glasses";
-    document.getElementById('heartRate').textContent = data.heartRate + " BPM";
-    document.getElementById('temperature').textContent = data.temperature + " °C";
-
+    document.getElementById('waterIntake').textContent = data.calc.waterIntake + " ml/hr";
+    document.getElementById('heartRate').textContent = data.Sensor.heartRate + " BPM";
+    document.getElementById('temperature').textContent = data.Sensor.temperature + " °C";
+    document.getElementById('caloriesBurned').textContent = data.calc.kcalPerHour + " Kcal/hr";
+    document.getElementById('spO2').textContent = data.Sensor.spO2 + "%";
+    document.getElementById('humidity').textContent = data.Sensor.humidity + "%";
     // Add data to the charts (assumed to be in real-time with timestamp labels)
-    //updateChart(activeMinutesChart, data.activeMinutes);
-    //updateChart(caloriesBurnedChart, data.caloriesBurned);
-    //updateChart(stepsTakenChart, data.stepsTaken);
     updateChart(waterIntakeChart, data.waterIntake);
-    updateChart(heartRateChart, data.heartRate);
-    updateChart(temperatureChart, data.temperature);
+    updateChart(heartRateChart, data.Sensor.heartRate);
+    updateChart(temperatureChart, data.Sensor.temperature);
+    updateChart(caloriesBurnedChart, data.calc.kcalPerHour);
+    updateChart(spO2Chart, data.Sensor.spO2);
+    updateChart(humidityChart, data.Sensor.humidity);
 }
 
 // Function to update chart data
@@ -83,17 +67,26 @@ function updateChart(chart, newData) {
     chart.update();
 }
 
-// Fetch data from Firebase Realtime Database
-const userId = "userId_123"; // Replace with the actual user ID
-const userRef = firebase.database().ref('users/' + userId);
-
-// Listen for real-time updates from Firebase
-userRef.on('value', (snapshot) => {
-    const data = snapshot.val();
-    updateDashboard(data);
-});
+async function fetchData() {
+    try {
+        const response = await fetch('http://localhost:5000/get_data');
+        const data = await response.json();
+        console.log("Fetched data:", data); // Log data for debugging
+        if (response.ok) {
+            updateDashboard(data); // Update dashboard with fetched data
+        } else {
+            console.error("Error fetching data:", data.error);
+        }
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+setInterval(fetchData, 5000);
 
 // Display current date
 const dateElement = document.getElementById('date');
 const today = new Date();
 dateElement.textContent = today.toDateString();
+
+// Call fetchData to start fetching data from Flask
+fetchData();

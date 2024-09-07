@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 *{
     padding:0;
@@ -19,7 +18,7 @@ header {
 
 .header .navbar {
     display: flex;
-    align-items: center; /* Changed from 'left' */
+    align-items: center; 
     gap: 20px;
 }
 nav ul {
@@ -59,43 +58,29 @@ nav a {
     color: #fff;
 }
 
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 50px 20px;
-    background: linear-gradient(to right, #4481eb, #4481eb), 
-    url('website/images/tracker.png') no-repeat center center; /* Add image on top of blue background */    height:100vh;
-
+h1 {
+    
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+    color:  #4481eb;
 }
 
-.hero-content {
-    max-width: 50%;
-}
-
-.hero-content h1 {
-    font-size: 48px;
-    color: #fff;
-    line-height: 1.2;
-}
-
-.hero-content h1 span {
-    color: #ffcc00;
-}
-
-.hero-content p {
-    font-size: 18px;
+h3 {
+    font-size: 24px;
     margin: 20px 0;
-    color: #f2f2f2;
+    padding-left: 30px;
 }
 
-.cta-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color:   #ffcc00;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
+.leg, .squat, .full-body {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
+iframe {
+    max-width: 100%;
+    /* height: auto; */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
