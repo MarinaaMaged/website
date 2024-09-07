@@ -26,29 +26,29 @@
         <div class="container">
             <!-- Active Minutes Card -->
             <div class="card">
-                <h3>Active Minutes</h3>
-                <p id="activeMinutes">0 Min</p>
-                <canvas id="activeMinutesChart"></canvas>
+                <h3>Humidity</h3>
+                <p id="humidity">0 Min</p>
+                <canvas id="humidityChart"></canvas>
             </div>
 
             <!-- Calories Burned Card -->
             <div class="card">
                 <h3>Calories Burned</h3>
-                <p id="caloriesBurned">0 Kcal</p>
+                <p id="caloriesBurned">0 Kcal/hr</p>
                 <canvas id="caloriesBurnedChart"></canvas>
             </div>
 
             <!-- Steps Taken Card -->
             <div class="card">
-                <h3>Steps Taken</h3>
-                <p id="stepsTaken">0 Steps</p>
-                <canvas id="stepsTakenChart"></canvas>
+                <h3>Oxygen Saturation</h3>
+                <p id="spO2">0%</p>
+                <canvas id="spO2Chart"></canvas>
             </div>
 
             <!-- Water Intake Card -->
             <div class="card">
                 <h3>Water Intake</h3>
-                <p id="waterIntake">0/10 Glasses</p>
+                <p id="waterIntake">0 ml/hr</p>
                 <canvas id="waterIntakeChart"></canvas>
             </div>
 
@@ -67,8 +67,9 @@
             </div>
         </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="dashboard.js"></script>
 </body>
 </html>
