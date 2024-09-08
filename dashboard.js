@@ -1,4 +1,23 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
 
+const firebaseConfig = {
+    apiKey: "AIzaSyBBBkTMKdegGRfGMRfWn_dTYR5S4EPp--g",
+    authDomain: "iot-workout-tracker.firebaseapp.com",
+    databaseURL: "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "iot-workout-tracker",
+    storageBucket: "iot-workout-tracker.appspot.com",
+    messagingSenderId: "848259868418",
+    appId: "1:848259868418:web:b74d9101195ba973b6841b",
+    measurementId: "G-Z0XFK6SEFW"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// Socket.io initialization
+ const socket = io('http://localhost:5001');
 // Create Charts for each metric
 let waterIntakeChart = createChart('waterIntakeChart', 'Water Intake');
 let heartRateChart = createChart('heartRateChart', 'Heart Rate');
@@ -52,6 +71,15 @@ function updateDashboard(data) {
     updateChart(humidityChart, data.Sensor.humidity);
 }
 
+async function startMqtt() {
+    try {
+        await fetch('http://localhost:5001/');
+        console.log('MQTT client started');
+    } catch (error) {
+        console.error("Error starting MQTT:", error);
+    }
+}
+
 // Function to update chart data
 function updateChart(chart, newData) {
     const timestamp = new Date().toLocaleTimeString(); // Use this for real-time data
@@ -81,12 +109,27 @@ async function fetchData() {
         console.error("Error fetching data:", error);
     }
 }
-setInterval(fetchData, 5000);
 
+
+
+socket.on('connect', () => {
+    console.log('Connected to the server');
+});
+
+socket.on('new_data', (message) => {
+    console.log('New data received:', message);
+    fetchData();
+});
+
+socket.on('disconnect', () => {
+    console.log('Disconnected from the server');
+});
 // Display current date
 const dateElement = document.getElementById('date');
 const today = new Date();
 dateElement.textContent = today.toDateString();
 
 // Call fetchData to start fetching data from Flask
-fetchData();
+fetchData()().then(() => {
+    startMqtt();
+});
