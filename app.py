@@ -1,5 +1,6 @@
-from flask import Flask, jsonify,render_template,Response
+from flask import Flask, jsonify,render_template,Response, send_from_directory
 import requests
+import os
 from flask_cors import CORS
 import cv2
 
@@ -10,15 +11,19 @@ CORS(app)
 firebase_url = "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/.json"
 
 def generate_frames():
-   while True:
-        success,frame= camera.read()
+    while True:
+        success, frame = camera.read()  # Read the frame from the camera
         if not success:
             break
         else:
-            ret,buffer=cv2.imencode('.jpg',frame)
-            farme=buffer.tobytes()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            # Encode the frame as JPEG
+            ret, buffer = cv2.imencode('.jpg', frame)
+            frame = buffer.tobytes()  # Convert to bytes
+            
+            # Yield the frame with the proper format for multipart streaming
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
@@ -62,7 +67,7 @@ def get_data():
 
 @app.route('/')
 def index():
-    return render_template('live.html')
+     return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'live.html')
 
 @app.route('/video')
 def video():
