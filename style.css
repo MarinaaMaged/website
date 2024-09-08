@@ -365,3 +365,29 @@ form.sign-up-form{
       left: 50%;
     }
   }
+
+  footer {
+    color: rgb(0, 0, 0);
+    margin-top: auto; 
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #e3eef9;
+    font-size: 12px;
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+  }
+  
