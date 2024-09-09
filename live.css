@@ -7,6 +7,8 @@
 }
 body{
     font-family:'Open Sans',sans-serif;
+    background: radial-gradient(circle at 20% 30%, #1c2b4d 10%, #070b1a 50%);
+    background-size: cover;
 }
 header {
     display: flex;
@@ -35,32 +37,14 @@ nav a {
     font-size: 16px;
 }
 
-.auth-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.auth-buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.sign-up {
-    background-color: #fff;
-    color:  #4481eb;
-    border: 2px solid  #4481eb;
-}
-
-.sign-in {
-    background-color:  #4481eb;
-    color: #fff;
-}
 footer {
     color: rgb(0, 0, 0);
     margin-top: auto; 
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
   }
   
   .footer-container {
@@ -82,4 +66,16 @@ footer {
   .footer-bottom p {
     margin: 0;
   }
-  
+  cv{
+    align-items: center;
+
+  }
+  h1{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    color: #f2f4f6;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }

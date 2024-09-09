@@ -7,19 +7,23 @@
 }
 body{
     font-family:'Open Sans',sans-serif;
+    background: radial-gradient(circle at 20% 30%, #1c2b4d 10%, #070b1a 50%), 
+                url('website\images\gym-website-1024x502.jpg') no-repeat center center; /* Add image on top of gradient */
+    background-size: cover; /* Adjust the size of the background image */
+    height: 100vh;
 }
 header {
     display: flex;
     justify-content: space-between;
     align-items: left;
     padding: 20px;
-    background-color: #fff;
+    background-color: #d7eaf8;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header .navbar {
     display: flex;
-    align-items: center; /* Changed from 'left' */
+    align-items: center; 
     gap: 20px;
 }
 nav {
@@ -35,29 +39,6 @@ nav a {
     font-size: 16px;
 }
 
-.auth-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.auth-buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.sign-up {
-    background-color: #fff;
-    color:  #4481eb;
-    border: 2px solid  #4481eb;
-}
-
-.sign-in {
-    background-color:  #4481eb;
-    color: #fff;
-}
 
 .dashboard {
     text-align: center;
@@ -65,11 +46,11 @@ nav a {
 }
 
 h1 {
-    color: #333;
+    color: #f7f7f7;
 }
 
 p {
-    color: #666;
+    color: #f9f5f5;
 }
 
 .container {
@@ -80,7 +61,7 @@ p {
 }
 
 .card {
-    background-color: #fff;
+    background-color: #f4f6e8;
     width: 200px;
     padding: 20px;
     margin: 10px;
@@ -101,6 +82,11 @@ p {
 footer {
     color: rgb(0, 0, 0);
     margin-top: auto; 
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
   }
   
   .footer-container {
@@ -115,11 +101,11 @@ footer {
   .footer-bottom {
     text-align: center;
     padding: 10px 0;
-    background-color: #e3eef9;
+    background-color: #d7eaf8;
     font-size: 12px;
   }
   
   .footer-bottom p {
     margin: 0;
+    color: #000;
   }
-  
