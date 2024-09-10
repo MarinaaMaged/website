@@ -71,6 +71,14 @@ footer {
     align-items: center;
 
   }
+    .cv img {
+    border-radius: 20px; /* Rounded corners */
+    width: 90%; /* Adjust the width */
+    max-width: 600px; /* Set a maximum width */
+    height: auto; /* Keep aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the video */
+}
   h1{
     font-size: 40px;
     text-align: center;
