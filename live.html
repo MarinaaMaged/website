@@ -44,7 +44,7 @@
         const liveVideo = document.getElementById('live-video');
 
         startBtn.addEventListener('click', () => {
-            fetch('/start_stream')
+            fetch('http://127.0.0.1:5000/start_stream')
                 .then(response => {
                     if (response.ok) {
                         liveVideo.src = "http://127.0.0.1:5000/video";
@@ -58,7 +58,7 @@
         });
 
         finishBtn.addEventListener('click', () => {
-            fetch('/stop_stream')
+            fetch('http://127.0.0.1:5000/stop_stream')
                 .then(response => {
                     if (response.ok) {
                         liveVideo.style.display = 'none';

@@ -10,7 +10,7 @@ from firebase_admin import credentials, db
 import threading
 
 app = Flask(__name__)
-cred = credentials.Certificate("D:\C IoT\website\website\iot-workout-tracker-firebase-adminsdk-v1zcl-dc66c26ef7.json")
+cred = credentials.Certificate("iot-workout-tracker-firebase-adminsdk-v1zcl-dc66c26ef7.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/'  
 })
