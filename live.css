@@ -80,3 +80,23 @@ footer {
     letter-spacing: 1px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   }
+ 
+  .start{
+    width: 150px;
+    height:49px;
+    border:none;
+    outline:none;
+    border-radius:49px;
+    cursor:pointer;
+    background-color:#fff;
+    color: #1c2b4d;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px;
+    transition: .5s;
+position: fixed;
+  }
+  .start:hover{
+    background-color:#b0b4bc;
+
+  }
