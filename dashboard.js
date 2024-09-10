@@ -130,6 +130,6 @@ const today = new Date();
 dateElement.textContent = today.toDateString();
 
 // Call fetchData to start fetching data from Flask
-fetchData()().then(() => {
+fetchData().then(() => {
     startMqtt();
 });
