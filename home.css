@@ -42,7 +42,7 @@ nav a {
     justify-content: space-between;
     padding: 50px 20px;
     background: radial-gradient(circle at 20% 30%, #1c2b4d 10%, #070b1a 50%), 
-                url("homeIMG.png") no-repeat center center; 
+                url("homeIMG.png") center center; 
     background-size: cover; 
     height: 100vh;
     position: relative;
@@ -50,7 +50,9 @@ nav a {
     overflow: hidden; 
 }
 
-
+.banner-img{
+    position: absolute;
+}
 .hero-content {
     max-width: 50%;
 }
@@ -128,11 +130,39 @@ footer {
   .footer-bottom p {
     margin: 0;
   }
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.log-out {
+    height: 70%;
+    width:100%;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    cursor:pointer;
+    color: #020202;
+    font-weight: 900;
+    font-size: large;
+    margin: 10px;
+background-color: #d7eaf8;
+}
+
   
   @media (max-width: 768px) { 
     .banner-img {
         right: 5px;
         bottom: 170px;
+        position: absolute;
     }
 }
 
@@ -141,6 +171,7 @@ footer {
        right: 150px;
         bottom: 140px;
         max-width: 20%; 
+        position: absolute;
     }
 }
   

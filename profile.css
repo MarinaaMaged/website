@@ -172,3 +172,48 @@ footer {
 #profileForm button:hover {
     background-color: #0056b3;
 }
+.update{
+    width: 150px;
+    height:49px;
+    border:none;
+    outline:none;
+    border-radius:49px;
+    cursor:pointer;
+    background-color:#fff;
+    color: #1c2b4d;
+    font-weight: 600;
+    margin: 10px;
+    transition: .5s;
+position: relative;
+  }
+  .update:hover{
+    background-color:#b0b4bc;
+
+  }
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.log-out {
+    height: 70%;
+    width:100%;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    cursor:pointer;
+    color: #020202;
+    font-weight: 900;
+    font-size: large;
+    /* margin: 10px; */
+background-color: #d7eaf8;
+}
+

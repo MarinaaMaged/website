@@ -15,6 +15,9 @@
             <a href="live.html">Live Coach</a>
             <a href="profile.html">Profile</a>
         </nav>
+        <div class="auth-buttons"></div>
+        <a href="index.html"><button class="log-out">Log out</button></a>
+        </div>
     </header>
 
     <div class="profile-container">
@@ -33,30 +36,31 @@
                 <div class="social-links">
                     <a href="https://facebook.com">Facebook</a>
                     <a href="https://Instagram.com">Instagram</a>
-                    <a href="https://Twitter.com">Twitter</a>
+                    <a href="https://Twitter.com">X</a>
                 </div>
             </div>
         </div>
     </div>
-        <div>
-            <button> </button>
-        </div>
+    <div>
+        <button class="update" onclick="toggleProfileForm()">Update your Data</button>
+    </div>
+    <div id="profileFormContainer" style="display: none;">
         <form id="profileForm">
             <label for="nameInput">Name:</label>
             <input type="text" id="nameInput" placeholder="Enter your name">
-
+    
             <label for="weightInput">Weight (kg):</label>
             <input type="number" id="weightInput" placeholder="Enter your weight">
-
+    
             <label for="ageInput">Age:</label>
             <input type="number" id="ageInput" placeholder="Enter your age">
-
+    
             <label for="goalsInput">Workout Goals:</label>
             <textarea id="goalsInput" placeholder="Enter your fitness goals"></textarea>
-
+    
             <button type="button" onclick="updateProfile()">Update Profile</button>
         </form>
-
+    </div>
         <div class="goals-section">
             <h2>Fitness Goals</h2>
             <div id="fitnessGoals">

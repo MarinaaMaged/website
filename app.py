@@ -7,13 +7,19 @@ import mediapipe as mp
 import numpy as np
 import firebase_admin
 from firebase_admin import credentials, db
+import threading
 
 app = Flask(__name__)
-cred = credentials.Certificate(r"iot-workout-tracker-firebase-adminsdk-v1zcl-dc66c26ef7.json")
+cred = credentials.Certificate("D:\C IoT\website\website\iot-workout-tracker-firebase-adminsdk-v1zcl-dc66c26ef7.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/'  
 })
 
+cap = None  # Global variable for the video capture object
+
+# Define global variables to control the video stream
+streaming = False
+stream_thread = None
 
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
@@ -188,6 +194,29 @@ def get_data():
             return jsonify({"error": "Invalid data format"}), 400
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@app.route('/start_stream', methods=['GET'])
+def start_stream():
+    global streaming, stream_thread, cap
+    if not streaming:
+        streaming = True
+        cap = cv2.VideoCapture(0)
+        stream_thread = threading.Thread(target=generate_frames)
+        stream_thread.start()
+    return jsonify({'message': 'Stream started'})
+
+@app.route('/stop_stream', methods=['GET'])
+def stop_stream():
+    global streaming, cap
+    if streaming:
+        streaming = False
+        cap.release()
+    return jsonify({'message': 'Stream stopped'})
+
+@app.route('/live.css')
+def send_css():
+    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'live.css')
 
 @app.route('/')
 def index():

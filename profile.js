@@ -8,6 +8,8 @@ function updateProfile() {
     document.getElementById('weightDisplay').textContent = weight ? weight + ' kg' : '... kg';
     document.getElementById('ageDisplay').textContent = age ? age + ' years' : '... years';
     document.getElementById('goalsDisplay').textContent = goals || '...';
+
+    document.getElementById('profileFormContainer').style.display = 'none';
 }
 
 document.getElementById('profilePicInput').addEventListener('change', function (event) {
@@ -17,3 +19,11 @@ document.getElementById('profilePicInput').addEventListener('change', function (
     };
     reader.readAsDataURL(event.target.files[0]);
 });
+function toggleProfileForm() {
+    const formContainer = document.getElementById('profileFormContainer');
+    if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+        formContainer.style.display = 'block';
+    } else {
+        formContainer.style.display = 'none';
+    }
+}
