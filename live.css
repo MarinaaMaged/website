@@ -15,7 +15,7 @@ header {
     justify-content: space-between;
     align-items: left;
     padding: 20px;
-    background-color: #fff;
+    background-color: #d7eaf8;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -59,14 +59,15 @@ footer {
   .footer-bottom {
     text-align: center;
     padding: 10px 0;
-    background-color: #e3eef9;
+    background-color: #d7eaf8;
     font-size: 12px;
   }
   
   .footer-bottom p {
     margin: 0;
   }
-  cv{
+
+  .cv{
     align-items: center;
 
   }

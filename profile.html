@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header class="header"> 
+        <nav class="navbar"> 
+            <a href="home.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="workout.html">Workout</a>
+            <a href="live.html">Live Coach</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <!-- Profile Picture Upload -->
+            <label for="profilePicInput">
+                <img src="default-profile.jpg" alt="Profile Picture" id="profilePic" class="profile-picture">
+            </label>
+            <input type="file" id="profilePicInput" style="display: none;" accept="image/*">
+            <div class="profile-info">
+                <!-- Editable Name, Weight, Age -->
+                <h1 id="nameDisplay">Name</h1>
+                <p><strong>Weight:</strong> <span id="weightDisplay">... kg</span></p>
+                <p><strong>Age:</strong> <span id="ageDisplay">... years</span></p>
+                <p><strong>Workout Goals:</strong> <span id="goalsDisplay">...</span></p>
+                <div class="social-links">
+                    <a href="https://facebook.com">Facebook</a>
+                    <a href="https://Instagram.com">Instagram</a>
+                    <a href="https://Twitter.com">Twitter</a>
+                </div>
+            </div>
+        </div>
+
+        <form id="profileForm">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" placeholder="Enter your name">
+
+            <label for="weightInput">Weight (kg):</label>
+            <input type="number" id="weightInput" placeholder="Enter your weight">
+
+            <label for="ageInput">Age:</label>
+            <input type="number" id="ageInput" placeholder="Enter your age">
+
+            <label for="goalsInput">Workout Goals:</label>
+            <textarea id="goalsInput" placeholder="Enter your fitness goals"></textarea>
+
+            <button type="button" onclick="updateProfile()">Update Profile</button>
+        </form>
+
+        <div class="goals-section">
+            <h2>Fitness Goals</h2>
+            <div id="fitnessGoals">
+                <div class="goal">
+                    <h3>Goal 1: Lose 5kg</h3>
+                    <p>Status: <span class="status-complete">Completed</span></p>
+                    <p>Duration: 2 months</p>
+                </div>
+                <div class="goal">
+                    <h3>Goal 2: Run 10km</h3>
+                    <p>Status: <span class="status-progress">In Progress</span></p>
+                    <p>Target Completion: 3 weeks</p>
+                </div>
+                <div class="goal">
+                    <h3>Goal 3: Build muscle</h3>
+                    <p>Status: <span class="status-upcoming">Upcoming</span></p>
+                    <p>Target Start: Next Month</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; FITNESS | BY RAM </p>
+        </div>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+</html>
