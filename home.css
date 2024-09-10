@@ -43,7 +43,7 @@ nav a {
     padding: 50px 20px;
     /* Gradient background */
     background: radial-gradient(circle at 20% 30%, #1c2b4d 10%, #070b1a 50%), 
-                url('website\images\gym-website-1024x502.jpg') no-repeat center center; /* Add image on top of gradient */
+                url('homeIMG.png') no-repeat center center; /* Add image on top of gradient */
     background-size: cover; /* Adjust the size of the background image */
     height: 100vh;
     position: relative;
@@ -95,8 +95,18 @@ nav a {
     border-radius: 5px;
     font-size: 16px;
 }
+
+.banner-img {
+    position:fixed;;
+    bottom: 172px;
+    right: 20px;
+    max-width: 30%; 
+    height: auto;
+    border-radius: 20px;
+ 
+}
 footer {
-    color: rgb(0, 0, 0);
+    color: rgb(68, 52, 52);
     margin-top: auto; 
   }
   
@@ -119,4 +129,19 @@ footer {
   .footer-bottom p {
     margin: 0;
   }
+  
+  @media (max-width: 768px) { 
+    .banner-img {
+        right: 5px;
+        bottom: 170px;
+    }
+}
+
+@media (min-width: 769px) { 
+    .banner-img {
+       right: 150px;
+        bottom: 140px;
+        max-width: 20%; 
+    }
+}
   
