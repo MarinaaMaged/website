@@ -3,14 +3,14 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } f
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBBBkTMKdegGRfGMRfWn_dTYR5S4EPp--g",
-    authDomain: "iot-workout-tracker.firebaseapp.com",
-    databaseURL: "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "iot-workout-tracker",
-    storageBucket: "iot-workout-tracker.appspot.com",
-    messagingSenderId: "848259868418",
-    appId: "1:848259868418:web:b74d9101195ba973b6841b",
-    measurementId: "G-Z0XFK6SEFW"
+ apiKey: "AIzaSyBBBkTMKdegGRfGMRfWn_dTYR5S4EPp--g",
+  authDomain: "iot-workout-tracker.firebaseapp.com",
+  databaseURL: "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "iot-workout-tracker",
+  storageBucket: "iot-workout-tracker.appspot.com",
+  messagingSenderId: "848259868418",
+  appId: "1:848259868418:web:b74d9101195ba973b6841b",
+  measurementId: "G-Z0XFK6SEFW"
 };
 
 // Initialize Firebase

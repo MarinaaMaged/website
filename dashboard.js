@@ -2,14 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase
 import { getDatabase } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBBBkTMKdegGRfGMRfWn_dTYR5S4EPp--g",
-    authDomain: "iot-workout-tracker.firebaseapp.com",
-    databaseURL: "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "iot-workout-tracker",
-    storageBucket: "iot-workout-tracker.appspot.com",
-    messagingSenderId: "848259868418",
-    appId: "1:848259868418:web:b74d9101195ba973b6841b",
-    measurementId: "G-Z0XFK6SEFW"
+   apiKey: "AIzaSyBBBkTMKdegGRfGMRfWn_dTYR5S4EPp--g",
+  authDomain: "iot-workout-tracker.firebaseapp.com",
+  databaseURL: "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "iot-workout-tracker",
+  storageBucket: "iot-workout-tracker.appspot.com",
+  messagingSenderId: "848259868418",
+  appId: "1:848259868418:web:b74d9101195ba973b6841b",
+  measurementId: "G-Z0XFK6SEFW"
 };
 
 // Initialize Firebase
@@ -63,7 +63,7 @@ function updateDashboard(data) {
     document.getElementById('spO2').textContent = data.Sensor.spO2 + "%";
     document.getElementById('humidity').textContent = data.Sensor.humidity + "%";
     // Add data to the charts (assumed to be in real-time with timestamp labels)
-    updateChart(waterIntakeChart, data.waterIntake);
+    updateChart(waterIntakeChart, data.calc.waterIntake);
     updateChart(heartRateChart, data.Sensor.heartRate);
     updateChart(temperatureChart, data.Sensor.temperature);
     updateChart(caloriesBurnedChart, data.calc.kcalPerHour);

@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Tracker</title>
     <link rel="stylesheet" href="live.css"/>
-    <!-- <link rel="icon" href="favicon.ico"/>  -->
+    <title>Fitness Tracker</title>
 </head>
 <body>
     <header class="header"> 
@@ -18,17 +17,17 @@
         </nav>
         <div class="auth-buttons"></div>
         <a href="index.html"><button class="log-out">Log out</button></a>
-        </div>
     </header>
     <div class="container">
         <div class="row">
             <div class="cv">
                 <h1> Reps Workout with personal AI Trainer</h1>
-                <div>
+                <!-- New Button Container -->
+                <div class="button-container">
                     <button class="start" id="start-btn">Start!</button>
                     <button class="finish" id="finish-btn" style="display:none;">Finish!</button>
                 </div>
-                <img id="live-video" src="" width="100%" style="display:none;"/>
+                <img id="live-video" src="" style="display:none;" />
             </div>
         </div>
     </div>
@@ -70,5 +69,44 @@
                 });
         });
     </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+  <script type="module">
+    // Import Firebase libraries
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBBkTMKdegGRfGMRfWn_dTYR5S4EPp--g",
+      authDomain: "iot-workout-tracker.firebaseapp.com",
+      databaseURL: "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "iot-workout-tracker",
+      storageBucket: "iot-workout-tracker.appspot.com",
+      messagingSenderId: "848259868418",
+      appId: "1:848259868418:web:b74d9101195ba973b6841b",
+      measurementId: "G-Z0XFK6SEFW"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Connect to the Flask Socket.IO server
+    const socket = io('http://localhost:5001');
+
+    // Listen for 'exercise_data' from the Flask server
+    socket.on('exercise_data', (data) => {
+      console.log("Received exercise data:", data);
+
+      // Save the received data to Firebase
+      set(ref(db, 'exercise_data'), data)
+        .then(() => {
+          console.log("Data sent to Firebase successfully!");
+        })
+        .catch((error) => {
+          console.error("Error sending data to Firebase:", error);
+        });
+    });
+  </script>
 </body>
 </html>

@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-*{
-    padding:0;
-    margin:0;
-    box-sizing:border-box;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-body{
-    font-family:'Open Sans',sans-serif;
+
+body {
+    font-family: 'Open Sans', sans-serif;
     background: radial-gradient(circle at 20% 30%, #1c2b4d 10%, #070b1a 50%);
     background-size: cover;
 }
+
 header {
     display: flex;
     justify-content: space-between;
@@ -19,11 +21,12 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.header .navbar {
+.navbar {
     display: flex;
-    align-items: center; 
+    align-items: center;
     gap: 20px;
 }
+
 nav ul {
     list-style: none;
     display: flex;
@@ -39,47 +42,40 @@ nav a {
 
 footer {
     color: rgb(0, 0, 0);
-    margin-top: auto; 
+    margin-top: auto;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    
-  }
-  
-  .footer-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: start;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .footer-bottom {
+}
+
+.footer-bottom {
     text-align: center;
     padding: 10px 0;
     background-color: #d7eaf8;
     font-size: 12px;
-  }
-  
-  .footer-bottom p {
-    margin: 0;
-  }
-
-  .cv{
-    align-items: center;
-
-  }
-    .cv img {
-    border-radius: 20px; /* Rounded corners */
-    width: 90%; /* Adjust the width */
-    max-width: 600px; /* Set a maximum width */
-    height: auto; /* Keep aspect ratio */
-    display: block;
-    margin: 0 auto; /* Center the video */
 }
-  h1{
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.cv {
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.cv img {
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+h1 {
     font-size: 40px;
     text-align: center;
     margin-top: 60px;
@@ -87,47 +83,36 @@ footer {
     color: #f2f4f6;
     letter-spacing: 1px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }
- 
-  .start{
+}
+
+/* Add this new class for button container styling */
+.button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.start,
+.finish {
     width: 150px;
-    height:49px;
-    border:none;
-    outline:none;
-    border-radius:49px;
-    cursor:pointer;
-    background-color:#fff;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 49px;
+    cursor: pointer;
+    background-color: #fff;
     color: #1c2b4d;
     text-transform: uppercase;
     font-weight: 600;
     margin: 10px;
     transition: .5s;
-position: fixed;
-  }
-  .start:hover{
-    background-color:#b0b4bc;
+}
 
-  }
-  .finish{
-    width: 150px;
-    height:49px;
-    border:none;
-    outline:none;
-    border-radius:49px;
-    cursor:pointer;
-    background-color:#fff;
-    color: #1c2b4d;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin: 10px;
-    transition: .5s;
-position: fixed;
-  }
-  .finish:hover{
-    background-color:#b0b4bc;
+.start:hover,
+.finish:hover {
+    background-color: #b0b4bc;
+}
 
-  }
-  .auth-buttons {
+.auth-buttons {
     display: flex;
     gap: 10px;
 }
@@ -142,14 +127,14 @@ position: fixed;
 
 .log-out {
     height: 70%;
-    width:100%;
-    border:none;
-    outline:none;
-    border-radius:10px;
-    cursor:pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
     color: #020202;
     font-weight: 900;
     font-size: large;
     margin: 10px;
-background-color: #d7eaf8;
+    background-color: #d7eaf8;
 }

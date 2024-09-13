@@ -4,8 +4,16 @@ from flask import Flask, jsonify, render_template, Response, send_from_directory
 from flask_cors import CORS
 import paho.mqtt.client as paho
 from paho import mqtt
+import os
 from flask_socketio import SocketIO, emit
 from threading import Thread, Event
+import firebase_admin
+from firebase_admin import credentials, db
+
+cred = credentials.Certificate( "iot-workout-tracker-firebase-adminsdk-v1zcl-883936917f.json")
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/'
+})
 
 app = Flask(__name__)
 mqtt_thread_instance = None
@@ -17,13 +25,17 @@ CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5500"}})
 def on_connect(client, userdata, flags, rc, properties=None):
     print("CONNACK received with code %s." % rc)
     client.subscribe("sensor/humidity", qos=0)
+    client.subscribe("fitness/profile/age", qos=0)
 
 def on_subscribe(client, userdata, mid, granted_qos, properties=None):
     print("Subscribed: " + str(mid) + " " + str(granted_qos))
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
-    socketio.emit('new_data', {'message': msg.payload.decode()})  # Emit message to all connected Socket.IO clients
+    if msg.topic == "fitness/profile/age":
+        socketio.emit('profile_data', {'message': msg.payload.decode()})
+    elif msg.topic == "sensor/humidity":
+        socketio.emit('new_data', {'message': msg.payload.decode()})  # Emit message to all connected Socket.IO clients
 
 # Initialize the MQTT Client
 client = paho.Client(client_id="", userdata=None, protocol=paho.MQTTv5)
