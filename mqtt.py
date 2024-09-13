@@ -10,9 +10,9 @@ from threading import Thread, Event
 import firebase_admin
 from firebase_admin import credentials, db
 
-cred = credentials.Certificate( "iot-workout-tracker-firebase-adminsdk-v1zcl-883936917f.json")
+cred = credentials.Certificate( "flutter-project-eea51-firebase-adminsdk-ngomz-9234c88a9e.json")
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/'
+    'databaseURL': 'https://flutter-844ee-default-rtdb.firebaseio.com'
 })
 
 app = Flask(__name__)

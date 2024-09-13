@@ -12,8 +12,8 @@ import paho.mqtt.client as paho
 from paho import mqtt
 
 app = Flask(__name__)
-cred = credentials.Certificate("iot-workout-tracker-firebase-adminsdk-v1zcl-883936917f.json")
-firebase_admin.initialize_app(cred, {'databaseURL': 'https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/' })
+cred = credentials.Certificate("flutter-project-eea51-firebase-adminsdk-ngomz-9234c88a9e.json")
+firebase_admin.initialize_app(cred, {'databaseURL': 'https://flutter-844ee-default-rtdb.firebaseio.com' })
 
 cap = None  # Global variable for the video capture object
 
@@ -31,7 +31,7 @@ right_counter = 0
 right_stage = None
 
 CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5500"}})
-firebase_url = "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app/.json"
+firebase_url = "https://flutter-844ee-default-rtdb.firebaseio.com/.json"
 
 def calculate_angle(a, b, c):
     a = np.array(a) 
@@ -157,7 +157,7 @@ def get_data():
                     "EE": data["calc"]["EE"],
                     "MHR": data["calc"]["MHR"],
                     "intensity": data["calc"]["intensity"],
-                    "kcalPerHour": data["calc"]["kcalPerHour"]
+                     "kcalPerHour": data["calc"]["kcalPerHour"]
 
                     }
                 ,
@@ -173,10 +173,6 @@ def get_data():
                     "name":  data["Input"]["name"],
                     "goals":  data["Input"]["goals"]
                     },
-                    "left_counter": data["left_counter"],
-                    "left_stage": data["left_stage"],
-                    "right_counter": data["right_counter"],
-                    "right_stage": data["right_stage"]
             }
             return jsonify(result)
         else:

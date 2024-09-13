@@ -2,14 +2,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase
 import { getDatabase,  ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
 
 const firebaseConfig = {
- apiKey: "AIzaSyBBBkTMKdegGRfGMRfWn_dTYR5S4EPp--g",
-  authDomain: "iot-workout-tracker.firebaseapp.com",
-  databaseURL: "https://iot-workout-tracker-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "iot-workout-tracker",
-  storageBucket: "iot-workout-tracker.appspot.com",
-  messagingSenderId: "848259868418",
-  appId: "1:848259868418:web:b74d9101195ba973b6841b",
-  measurementId: "G-Z0XFK6SEFW"
+  apiKey: "AIzaSyBKV7uRb5YUUdkulVgqcFQsw9g1ffrOLs0",
+  authDomain: "flutter-844ee.firebaseapp.com",
+  databaseURL: "https://flutter-844ee-default-rtdb.firebaseio.com",
+  projectId: "flutter-844ee",
+  storageBucket: "flutter-844ee.appspot.com",
+  messagingSenderId: "344608236578",
+  appId: "1:344608236578:web:04be4a87ae2847aff8167b",
+  measurementId: "G-0H0Y629943"
+
 };
 
 
